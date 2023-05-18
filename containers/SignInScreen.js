@@ -31,6 +31,9 @@ export default function SignInScreen({ setToken }) {
   
   async function handleSignIn() {
     try {
+      if(!email || !password ) {
+        return setErrorMessage("Please fill all fields")
+      }
       setErrorMessage(null);
       setLoading(true)
       const response = await fetch("https://lereacteur-bootcamp-api.herokuapp.com/api/airbnb/user/log_in", {
@@ -43,10 +46,9 @@ export default function SignInScreen({ setToken }) {
       })
       const data = await response.json();  
       if(response.ok) {
-        // const userToken = "secret-token";
-        // setToken(userToken);
-        // navigation.navigate("Tab");
-        alert("signIn sucess!!!")     
+        const userToken = JSON.stringify(data);
+        setToken(userToken);
+
       } else if (response.status === 400) {
         setErrorMessage("Please fill all fields")
       } else if (response.status === 401) {
@@ -61,8 +63,8 @@ export default function SignInScreen({ setToken }) {
 
 
   return (
-    <KeyboardAwareScrollView style={styles.container}>
-      <SafeAreaView style={styles.form}>
+    <SafeAreaView style={styles.container}>
+      <KeyboardAwareScrollView  contentContainerStyle={styles.form}>
         <View style={styles.logo}>
           <Image source={require("../assets/ABNB.png")} style={styles.img}/>
           <Text style={styles.text}>Sign in </Text>
@@ -120,7 +122,7 @@ export default function SignInScreen({ setToken }) {
             <Text>No account ? Register</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
-    </KeyboardAwareScrollView>
+      </KeyboardAwareScrollView>
+    </SafeAreaView >
   );
 }

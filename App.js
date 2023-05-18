@@ -9,7 +9,12 @@ import ProfileScreen from "./containers/ProfileScreen";
 import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import SettingsScreen from "./containers/SettingsScreen";
+import RoomScreen from "./containers/RoomScreen";
 import SplashScreen from "./containers/SplashScreen";
+
+import { AntDesign } from '@expo/vector-icons';
+import LogoHeader from "./components/LogoHeader";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -69,7 +74,7 @@ export default function App() {
               <Tab.Navigator
                 screenOptions={{
                   headerShown: false,
-                  tabBarActiveTintColor: "tomato",
+                  tabBarActiveTintColor: "#f43f5e",
                   tabBarInactiveTintColor: "gray",
                 }}
               >
@@ -87,25 +92,54 @@ export default function App() {
                       <Stack.Screen
                         name="Home"
                         options={{
-                          title: "My App",
-                          headerStyle: { backgroundColor: "red" },
-                          headerTitleStyle: { color: "white" },
+                          // title: "My App",
+                          headerTitle: ()=> <LogoHeader />,
+                          headerStyle: { backgroundColor: "#f1f5f9"},
+                          headerTitleAlign: "center",
+                          // headerTitleStyle: { color: "black" },
                         }}
                       >
                         {() => <HomeScreen />}
                       </Stack.Screen>
+                      <Stack.Screen
+                        name="Room"
+                        options={{
+                          // title: "My App",
+                          headerTitle: ()=> <LogoHeader />,
+                          headerStyle: { backgroundColor: "#f1f5f9"},
+                          headerTitleAlign: "center",
+                          // headerTitleStyle: { color: "black" },
+                        }}
+                      >
+                        {() => <RoomScreen />}
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  )}
+                </Tab.Screen>
 
+                <Tab.Screen
+                  name="TabProfile"
+                  options={{
+                    tabBarLabel: "Profile",
+                    tabBarIcon: ({color, size}) => (
+                      <AntDesign name="user" size={size} color={color} />
+                    ),
+                  }}       
+                >
+                  {()=> (
+                    <Stack.Navigator>
                       <Stack.Screen
                         name="Profile"
                         options={{
                           title: "User Profile",
                         }}
                       >
-                        {() => <ProfileScreen />}
+                        {() => <ProfileScreen userToken={userToken}/>}
                       </Stack.Screen>
                     </Stack.Navigator>
-                  )}
-                </Tab.Screen>
+                  )}     
+                </Tab.Screen>             
+
                 <Tab.Screen
                   name="TabSettings"
                   options={{

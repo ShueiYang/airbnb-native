@@ -43,7 +43,7 @@ function useStyles () {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            
+            marginTop: "8%", 
             gap: 25,
         },
         inputForm2: {

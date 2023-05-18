@@ -65,10 +65,8 @@ export default function SignUpScreen({ setToken }) {
       })
       const data = await response.json();  
       if(response.ok) {
-        // const userToken = "secret-token";
-        // setToken(userToken);
-        // navigation.navigate("Tab");
-        alert("signIn sucess!!!")
+        const userToken = JSON.stringify(data);
+        setToken(userToken);
       } 
         else if (data.error === "Missing parameters") {
         setErrorMessage("Please fill all fields")
