@@ -6,8 +6,6 @@ import {
   Text, 
   View,
   SafeAreaView,
-  Image,  
-  ScrollView,
   ActivityIndicator,
   FlatList,
 } from "react-native";

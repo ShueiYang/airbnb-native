@@ -141,6 +141,21 @@ function useHomeStyles () {
         },
         show: {
             color: "#4b5563",
+        },
+        mapContainer: {
+            flex: 1,
+            marginTop: 15,
+            backgroundColor: "#fff",
+            alignItems: "center",
+            justifyContent: "center",
+        },
+        map: {
+            height: 300,
+            width: "100%",
+        },
+        mapAround: {
+            width,
+            height,
         }
     })
 

@@ -124,7 +124,40 @@ function useStyles () {
         eyes: {
             position: "absolute",
             right: 10,
-        }   
+        },
+        editBtn: {
+            height: 180,
+            marginVertical: 35,
+            alignItems: "center",
+            justifyContent: "center",
+            gap:15,
+        },
+        avatar: {
+            width: 120,
+            height: 120,
+            marginTop: 25,
+            resizeMode: "contain",
+            borderWidth: 1,
+            borderRadius: 100, 
+            borderColor: "#f43f5e",     
+        },
+        userPic: {
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 15,
+        },
+        avatarIcon: {
+            marginTop: 25,
+            height: 120,
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 20,
+        },
+        load: {
+            flex: 1,
+            justifyContent: "center",     
+        } 
     })
 
     return {

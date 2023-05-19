@@ -3,16 +3,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import HomeScreen from "./containers/HomeScreen";
-import ProfileScreen from "./containers/ProfileScreen";
+import AroundScreen from "./containers/AroundScreen";
 import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
-import SettingsScreen from "./containers/SettingsScreen";
+import ProfileScreen from "./containers/ProfileScreen";
 import RoomScreen from "./containers/RoomScreen";
 import SplashScreen from "./containers/SplashScreen";
-
-import { AntDesign } from '@expo/vector-icons';
 import LogoHeader from "./components/LogoHeader";
 
 
@@ -118,50 +116,50 @@ export default function App() {
                 </Tab.Screen>
 
                 <Tab.Screen
-                  name="TabProfile"
+                  name="TabAroundMe"
                   options={{
-                    tabBarLabel: "Profile",
+                    tabBarLabel: "Around me",
                     tabBarIcon: ({color, size}) => (
-                      <AntDesign name="user" size={size} color={color} />
+                      <Ionicons name="location-outline" size={size} color={color} />
                     ),
                   }}       
                 >
                   {()=> (
                     <Stack.Navigator>
                       <Stack.Screen
-                        name="Profile"
+                        name="Around me"
                         options={{
-                          title: "User Profile",
+                          headerTitle: ()=> <LogoHeader />,
+                          headerStyle: { backgroundColor: "#f1f5f9"},
+                          headerTitleAlign: "center",
                         }}
                       >
-                        {() => <ProfileScreen userToken={userToken}/>}
+                        {() => <AroundScreen userToken={userToken}/>}
                       </Stack.Screen>
                     </Stack.Navigator>
                   )}     
                 </Tab.Screen>             
 
                 <Tab.Screen
-                  name="TabSettings"
+                  name="TabMyProfile"
                   options={{
-                    tabBarLabel: "Settings",
+                    tabBarLabel: "My Profile",
                     tabBarIcon: ({ color, size }) => (
-                      <Ionicons
-                        name={"ios-options"}
-                        size={size}
-                        color={color}
-                      />
+                      <AntDesign name="user" size={size} color={color} />
                     ),
                   }}
                 >
                   {() => (
                     <Stack.Navigator>
                       <Stack.Screen
-                        name="Settings"
+                        name="My profile"
                         options={{
-                          title: "Settings",
+                          headerTitle: ()=> <LogoHeader />,
+                          headerStyle: { backgroundColor: "#f1f5f9"},
+                          headerTitleAlign: "center",
                         }}
                       >
-                        {() => <SettingsScreen setToken={setToken} />}
+                        {() => <ProfileScreen userToken={userToken} setToken={setToken} />}
                       </Stack.Screen>
                     </Stack.Navigator>
                   )}

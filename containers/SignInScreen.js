@@ -48,7 +48,7 @@ export default function SignInScreen({ setToken }) {
       if(response.ok) {
         const userToken = JSON.stringify(data);
         setToken(userToken);
-
+    
       } else if (response.status === 400) {
         setErrorMessage("Please fill all fields")
       } else if (response.status === 401) {
